@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 function Navbar() {
@@ -21,23 +21,51 @@ function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-lg">
+
           <li>
-            <Link to="/" className="hover:text-yellow-300">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+              }
+            >
               Home
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/about" className="hover:text-yellow-300">
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+              }
+            >
               About
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/contact" className="hover:text-yellow-300">
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+              }
+            >
               Contact
-            </Link>
+            </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+              }
+            >
+              Login
+            </NavLink>
+          </li>
+
         </ul>
 
         {/* Mobile Menu Button */}
@@ -52,35 +80,43 @@ function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <ul className="md:hidden bg-blue-800 text-center py-4 space-y-4">
+
           <li>
-            <Link
+            <NavLink
               to="/"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-yellow-300"
             >
               Home
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/about"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-yellow-300"
             >
               About
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/contact"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-yellow-300"
             >
               Contact
-            </Link>
+            </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              to="/login"
+              onClick={() => setMenuOpen(false)}
+            >
+              Login
+            </NavLink>
+          </li>
+
         </ul>
       )}
     </nav>

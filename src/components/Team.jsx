@@ -1,35 +1,35 @@
 function Team() {
-  const members = [
+  const team = [
     {
       name: "John Smith",
-      role: "Frontend Developer",
+      role: "CEO",
     },
     {
       name: "Sarah Johnson",
-      role: "UI/UX Designer",
+      role: "Frontend Developer",
     },
     {
-      name: "David Wilson",
+      name: "Michael Brown",
       role: "Backend Developer",
     },
   ];
 
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-
         <h2 className="text-4xl font-bold text-center text-blue-600 mb-10">
-          Meet Our Team
+          Our Team
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-
-          {members.map((member, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {team.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-6 text-center"
+              className="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-2xl transition"
             >
-              <div className="w-24 h-24 rounded-full bg-blue-500 mx-auto mb-4"></div>
+              <div className="w-24 h-24 rounded-full bg-blue-600 text-white flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                {member.name.charAt(0)}
+              </div>
 
               <h3 className="text-2xl font-bold">
                 {member.name}
@@ -38,12 +38,9 @@ function Team() {
               <p className="text-gray-600 mt-2">
                 {member.role}
               </p>
-
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
   );
