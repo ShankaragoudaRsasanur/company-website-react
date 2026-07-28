@@ -7,17 +7,25 @@ function Hero() {
 
         {/* Left Content */}
         <div className="text-center md:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Welcome to My Company
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Welcome to <br />
+            <span className="text-yellow-300">My Company</span>
           </h1>
 
-          <p className="text-base sm:text-lg mb-6">
-            We build modern websites and applications using React.
+          <p className="text-lg md:text-xl mb-8">
+            We build modern websites and applications using
+            React, Java, Spring Boot, and modern technologies.
           </p>
 
-          <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200">
-            Get Started
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200">
+              Get Started
+            </button>
+
+            <button className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600">
+              Learn More
+            </button>
+          </div>
         </div>
 
         {/* Right Image */}
@@ -25,7 +33,7 @@ function Hero() {
           <img
             src={hero}
             alt="Hero"
-            className="w-64 sm:w-80 md:w-96"
+            className="w-72 md:w-[450px]"
           />
         </div>
 
