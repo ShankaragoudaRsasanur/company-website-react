@@ -31,7 +31,7 @@ function Login({ setIsLoggedIn }) {
 
       setIsLoggedIn(true);
 
-      navigate("/");
+      navigate("/dashboard");
     } else {
       alert("Invalid Email or Password");
     }

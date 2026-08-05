@@ -1,3 +1,4 @@
+import Dashboard from "./Pages/Dashboard";
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -38,12 +39,13 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </>
         ) : (
-          <>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<ContactUs />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </>
+    <>
+  <Route path="/" element={<Home />} />
+  <Route path="/about" element={<AboutUs />} />
+  <Route path="/contact" element={<ContactUs />} />
+  <Route path="/dashboard" element={<Dashboard />} />
+  <Route path="*" element={<Navigate to="/dashboard" />} />
+</>
         )}
       </Routes>
     </>
