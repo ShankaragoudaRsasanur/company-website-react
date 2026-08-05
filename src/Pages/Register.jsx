@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [name, setName] = useState("");
@@ -21,6 +23,8 @@ function Register() {
       alert("Passwords do not match");
     } else {
       alert("Registration Successful");
+
+      navigate("/login");
     }
   };
 
@@ -36,8 +40,12 @@ function Register() {
           Register to continue
         </p>
 
+        {/* Full Name */}
         <div className="mb-4">
-          <label className="block mb-2 font-semibold">Full Name</label>
+          <label className="block mb-2 font-semibold">
+            Full Name
+          </label>
+
           <input
             type="text"
             placeholder="Enter your name"
@@ -47,8 +55,12 @@ function Register() {
           />
         </div>
 
+        {/* Email */}
         <div className="mb-4">
-          <label className="block mb-2 font-semibold">Email</label>
+          <label className="block mb-2 font-semibold">
+            Email
+          </label>
+
           <input
             type="email"
             placeholder="Enter your email"
@@ -58,8 +70,12 @@ function Register() {
           />
         </div>
 
+        {/* Password */}
         <div className="mb-4">
-          <label className="block mb-2 font-semibold">Password</label>
+          <label className="block mb-2 font-semibold">
+            Password
+          </label>
+
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Enter password"
@@ -69,8 +85,12 @@ function Register() {
           />
         </div>
 
+        {/* Confirm Password */}
         <div className="mb-4">
-          <label className="block mb-2 font-semibold">Confirm Password</label>
+          <label className="block mb-2 font-semibold">
+            Confirm Password
+          </label>
+
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Confirm password"
@@ -80,6 +100,7 @@ function Register() {
           />
         </div>
 
+        {/* Show Password */}
         <div className="mb-5">
           <label className="flex items-center gap-2">
             <input
@@ -91,6 +112,7 @@ function Register() {
           </label>
         </div>
 
+        {/* Register Button */}
         <button
           onClick={handleRegister}
           className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
