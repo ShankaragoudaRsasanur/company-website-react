@@ -8,6 +8,7 @@ import AboutUs from "./Pages/AboutUs";
 import ContactUs from "./Pages/ContactUs";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   // Login state
