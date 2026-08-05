@@ -12,12 +12,28 @@ function Login({ setIsLoggedIn }) {
   const handleLogin = () => {
     if (email === "" || password === "") {
       alert("Please enter Email and Password");
-    } else {
+      return;
+    }
+
+    // Get registered user from localStorage
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!savedUser) {
+      alert("No account found. Please register first.");
+      return;
+    }
+
+    if (
+      email === savedUser.email &&
+      password === savedUser.password
+    ) {
       alert("Login Successful");
 
       setIsLoggedIn(true);
 
       navigate("/");
+    } else {
+      alert("Invalid Email or Password");
     }
   };
 

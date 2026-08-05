@@ -22,6 +22,15 @@ function Register() {
     } else if (password !== confirmPassword) {
       alert("Passwords do not match");
     } else {
+      // Save user in localStorage
+      const user = {
+        name,
+        email,
+        password,
+      };
+
+      localStorage.setItem("user", JSON.stringify(user));
+
       alert("Registration Successful");
 
       navigate("/login");
