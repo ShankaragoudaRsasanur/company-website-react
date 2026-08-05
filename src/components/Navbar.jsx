@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
-function Navbar() {
+function Navbar({ isLoggedIn, setIsLoggedIn }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-blue-700 text-white shadow-lg">
@@ -26,7 +33,9 @@ function Navbar() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+                isActive
+                  ? "text-yellow-300 font-bold"
+                  : "hover:text-yellow-300"
               }
             >
               Home
@@ -37,7 +46,9 @@ function Navbar() {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+                isActive
+                  ? "text-yellow-300 font-bold"
+                  : "hover:text-yellow-300"
               }
             >
               About
@@ -48,23 +59,44 @@ function Navbar() {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
+                isActive
+                  ? "text-yellow-300 font-bold"
+                  : "hover:text-yellow-300"
               }
             >
               Contact
             </NavLink>
           </li>
 
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"
-              }
-            >
-              Login
-            </NavLink>
-          </li>
+          {!isLoggedIn ? (
+            <li>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-300 font-bold"
+                    : "hover:text-yellow-300"
+                }
+              >
+                Login
+              </NavLink>
+            </li>
+          ) : (
+            <>
+              <li className="text-yellow-300 font-semibold">
+                Welcome, Shankaragouda
+              </li>
+
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="hover:text-red-300"
+                >
+                  Logout
+                </button>
+              </li>
+            </>
+          )}
 
         </ul>
 
@@ -82,40 +114,51 @@ function Navbar() {
         <ul className="md:hidden bg-blue-800 text-center py-4 space-y-4">
 
           <li>
-            <NavLink
-              to="/"
-              onClick={() => setMenuOpen(false)}
-            >
+            <NavLink to="/" onClick={() => setMenuOpen(false)}>
               Home
             </NavLink>
           </li>
 
           <li>
-            <NavLink
-              to="/about"
-              onClick={() => setMenuOpen(false)}
-            >
+            <NavLink to="/about" onClick={() => setMenuOpen(false)}>
               About
             </NavLink>
           </li>
 
           <li>
-            <NavLink
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-            >
+            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
               Contact
             </NavLink>
           </li>
 
-          <li>
-            <NavLink
-              to="/login"
-              onClick={() => setMenuOpen(false)}
-            >
-              Login
-            </NavLink>
-          </li>
+          {!isLoggedIn ? (
+            <li>
+              <NavLink
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </NavLink>
+            </li>
+          ) : (
+            <>
+              <li className="text-yellow-300">
+                Welcome, Shankaragouda
+              </li>
+
+              <li>
+                <button
+                  onClick={() => {
+                    setIsLoggedIn(false);
+                    setMenuOpen(false);
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            </>
+          )}
 
         </ul>
       )}

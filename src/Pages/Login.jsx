@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setIsLoggedIn }) {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -12,6 +14,10 @@ function Login() {
       alert("Please enter Email and Password");
     } else {
       alert("Login Successful");
+
+      setIsLoggedIn(true);
+
+      navigate("/");
     }
   };
 
@@ -29,7 +35,9 @@ function Login() {
 
         {/* Email */}
         <div className="mb-5">
-          <label className="block mb-2 font-semibold">Email</label>
+          <label className="block mb-2 font-semibold">
+            Email
+          </label>
 
           <input
             type="email"
@@ -42,7 +50,9 @@ function Login() {
 
         {/* Password */}
         <div className="mb-5">
-          <label className="block mb-2 font-semibold">Password</label>
+          <label className="block mb-2 font-semibold">
+            Password
+          </label>
 
           <input
             type={showPassword ? "text" : "password"}
@@ -73,7 +83,7 @@ function Login() {
           Login
         </button>
 
-        {/* Register Button */}
+        {/* Register */}
         <p className="text-center mt-6 text-gray-600">
           Don't have an account?
         </p>
